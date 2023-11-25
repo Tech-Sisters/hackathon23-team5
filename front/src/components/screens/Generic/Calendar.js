@@ -37,10 +37,8 @@ const styles = StyleSheet.create({
   homeHeader: {
     backgroundColor: "pink",
     height: 20,
-    width: width,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    justifyContent: 'flex-start'
   }
 });
 

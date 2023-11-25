@@ -1,15 +1,18 @@
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text} from "react-native";
 
-export default function Button(){
-  return(
+export default function Button({ text }) {
+
+  return (
     <View>
-      <TouchableOpacity 
-          style={[styles.clickButton]}>
-          <Text style={{fontWeight: 'bold', fontSize: 16}}> Let's do this !</Text>
-      </TouchableOpacity>
-    </View>
-  )
+    <TouchableOpacity 
+        style={[styles.clickButton]}>
+        <Text style={{fontWeight: 'bold', fontSize: 16}}>{text}</Text>
+    </TouchableOpacity>
+  </View>
+  );
 }
+
+
 
 const styles = StyleSheet.create({
   clickButton: {
