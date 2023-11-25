@@ -10,7 +10,9 @@ export default function Dashboard() {
         <Text>Dashboard</Text>
         <BottomTabs></BottomTabs>
       </View>
+      <BottomTabs></BottomTabs>
     </SafeAreaView>
+    
   )
 }
 

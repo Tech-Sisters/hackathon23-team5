@@ -1,16 +1,45 @@
+// import * as React from "react"
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons'
 import QuotesLiked from "../screens/Quotes/QuotesLiked"
 import Moods from "../screens/Moods/MoodsList"
 import Calendar from "../screens/Generic/Calendar"
-import Profile from "../screens/Users/ProfileScreen"
+import ProfileScreen from '../screens/Users/ProfileScreen';
+import Dashboard from "../screens/Generic/Dashboard";
 
+ 
+const dashboardName = "Dashboard"
+const calendarName = "Calendar"
+const likedName = "Liked"
+const moodsName = "Moods"
+const profilName = "Profil"
 
 const Tab = createBottomTabNavigator();
-
 export default function BottomTabs() {
     return (
-        <Tab.Navigator initialRouteName='Dashboard'>
+        <NavigationContainer independent={true}>
+            <Tab.Navigator
+            initialRouteName={Dashboard}
+            screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+                let rn = route.name;
+
+                if (rn === Dashboard) {
+                iconName = focused ? 'home' : 'home-outline';
+
+                } else if (rn === likedName) {
+                iconName = focused ? 'liked' : 'liked-outline';
+
+                } else if (rn === moodsName) {
+                iconName = focused ? 'moods' : 'moods-outline';
+                }
+
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            })}>
             <Tab.Screen
                 name="Liked"
                 component={QuotesLiked}
@@ -40,7 +69,7 @@ export default function BottomTabs() {
             />
             <Tab.Screen
                 name="Profile"
-                component={Profile}
+                component={ProfileScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="user" size={24} color="black" />
@@ -48,6 +77,7 @@ export default function BottomTabs() {
                     ),
                 }} />
         </Tab.Navigator>
+        </NavigationContainer>
     )
 }
 

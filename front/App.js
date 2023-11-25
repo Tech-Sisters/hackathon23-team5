@@ -6,6 +6,7 @@ import LaunchScreen  from './src/components/screens/Generic/LaunchScreen';
 import RegisterScreen  from './src/components/screens/Users/RegisterScreen';
 import Login from './src/components/screens/Users/LoginScreen'
 import Dashboard from './src/components/screens/Generic/Dashboard';
+// import Calendar from './src/components/screens/Generic/Calendar';
 import BottomTabs from './src/components/common/BottomTabs';
 
 const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ export default function App() {
             <Stack.Screen name="Register" component={RegisterScreen} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Dashboard" component={Dashboard} />
+            {/* <Stack.Screen name="Calendar" component={Calendar} /> */}
             <Stack.Screen
               name="BottomTabs"
               component={BottomTabs}
