@@ -6,6 +6,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('./auth/auth');
 
+
 const quotesRoutes = require('./routes/api/quotes');
 const usersRoutes = require('./routes/api/users');
 const authRoutes = require('./routes/api/auth');

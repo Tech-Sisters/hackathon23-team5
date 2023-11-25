@@ -4,12 +4,13 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 //import CalendarPicker from the package we installed
 import CalendarPicker from 'react-native-calendar-picker';
+import axios from 'axios';
 
-const Dashboard = () => {
+const Calendar = () => {
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
 
-  const onDateChange = (date, type) => {
+  const postPeriod = (date, type) => {
     //function to handle the date change
     if (type === 'END_DATE') {
       setSelectedEndDate(date);
@@ -18,7 +19,18 @@ const Dashboard = () => {
       setSelectedStartDate(date);
     }
   };
-
+  const sendPeriodData = async () => {
+    try {
+       const response = await axios.post('http://localhost:3000/api/phases', {
+        postPeriod
+         
+       });
+       console.log(response.data);
+    } catch (err) {
+       console.error(err);
+    }
+   };
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -52,7 +64,7 @@ const Dashboard = () => {
           textStyle={{
             color: '#000000',
           }}
-          onDateChange={onDateChange}
+          postPeriod={postPeriod}
         />
         <View style={styles.textStyle}>
           <Text style={styles.textStyle}>Selected Start Date :</Text>
@@ -68,7 +80,7 @@ const Dashboard = () => {
     </SafeAreaView>
   );
 };
-export default Dashboard;
+export default Calendar;
 
 const styles = StyleSheet.create({
   container: {
