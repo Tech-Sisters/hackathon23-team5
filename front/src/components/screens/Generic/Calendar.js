@@ -1,7 +1,6 @@
-// import React in our code
 import React, { useState } from 'react';
 // import all the components we are going to use
-import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, Button } from 'react-native';
 //import CalendarPicker from the package we installed
 import CalendarPicker from 'react-native-calendar-picker';
 import axios from 'axios';
@@ -10,7 +9,7 @@ const Calendar = () => {
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
 
-  const postPeriod = (date, type) => {
+  const onDateChange = (date, type) => {
     //function to handle the date change
     if (type === 'END_DATE') {
       setSelectedEndDate(date);
@@ -19,18 +18,8 @@ const Calendar = () => {
       setSelectedStartDate(date);
     }
   };
-  const sendPeriodData = async () => {
-    try {
-       const response = await axios.post('http://localhost:3000/api/phases', {
-        postPeriod
-         
-       });
-       console.log(response.data);
-    } catch (err) {
-       console.error(err);
-    }
-   };
-  
+  const sendPeriodData = [ selectedStartDate , selectedEndDate ]
+  console.log(sendPeriodData)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -64,8 +53,13 @@ const Calendar = () => {
           textStyle={{
             color: '#000000',
           }}
-          postPeriod={postPeriod}
+          onDateChange={onDateChange}
         />
+        <Button 
+          onPress={console.log('hey')}
+          title='Enregistrer'>
+
+        </Button>
         <View style={styles.textStyle}>
           <Text style={styles.textStyle}>Selected Start Date :</Text>
           <Text style={styles.textStyle}>

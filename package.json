@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^1.6.2",
     "react-native-material-design": "^0.3.7"
   }
 }
