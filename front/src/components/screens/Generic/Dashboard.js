@@ -38,7 +38,8 @@ const Dashboard = () => {
       setSelectedStartDate(date);
     }
   };
-  
+  const sendPeriodData = [ selectedStartDate , selectedEndDate ]
+  console.log(sendPeriodData)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -75,7 +76,7 @@ const Dashboard = () => {
           onDateChange={onDateChange}
         />
         <Button 
-          onPress={onDateChange}
+          onPress={console.log('hey')}
           title='Enregistrer'>
 
         </Button>
